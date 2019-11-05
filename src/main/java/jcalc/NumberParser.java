@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 class NumberParser {
   private boolean roman;
-  private boolean negative;
   private int arg1;
   private int arg2;
 
@@ -27,7 +26,6 @@ class NumberParser {
           break;
         case "-":
           result = arg1 - arg2;
-          negative = result < 0;
           break;
         case "*":
           result = arg1 * arg2;
@@ -40,9 +38,9 @@ class NumberParser {
           return;
       }
       if (roman) {
-        System.out.println("Результат: -" + RomanParser.generate(Math.abs(result)));
+        System.out.println("Результат: " + (result < 0 ? "-" : "") + RomanParser.generate(Math.abs(result)));
       } else {
-        System.out.println("Результат: " + String.valueOf(result));
+        System.out.println("Результат: " + (result < 0 ? "-" : "") + String.valueOf(result));
       }
     } else {
       System.out.println("Вы ввели недопустимое выражение!!!");

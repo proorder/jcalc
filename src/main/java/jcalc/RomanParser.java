@@ -18,6 +18,7 @@ class RomanParser {
   }
 
   static {
+    NUMERIC.put(0, "");
     NUMERIC.put(1, "I");
     NUMERIC.put(2, "II");
     NUMERIC.put(3, "III");
@@ -65,7 +66,7 @@ class RomanParser {
   }
 
   public static String generate(int arg) {
-    if (arg > 100) {
+    if (arg >= 100) {
       int count = (int) Character.getNumericValue(String.valueOf(arg).charAt(1));
       String result = "C";
       for (int i = 0; i < count; i++) {
@@ -73,7 +74,7 @@ class RomanParser {
       }
       result += RomanParser.NUMERIC.get((int) Character.getNumericValue(String.valueOf(arg).charAt(2)));
       return result;
-    } else if (arg > 50) {
+    } else if (arg >= 50) {
       int count = (int) Character.getNumericValue(String.valueOf(arg).charAt(0));
       String result = "L";
       for (int i = 5; i < count; i++) {
@@ -81,7 +82,7 @@ class RomanParser {
       }
       result += RomanParser.NUMERIC.get((int) Character.getNumericValue(String.valueOf(arg).charAt(1)));
       return result;
-    } else if (arg > 10) {
+    } else if (arg >= 10) {
       int count = (int) Character.getNumericValue(String.valueOf(arg).charAt(0));
       String result = "";
       for (int i = 0; i < count; i++) {
